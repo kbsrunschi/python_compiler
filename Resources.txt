@@ -1,0 +1,10 @@
+########## RESOURCES #########
+
+Ply:
+http://www.dabeaz.com/ply/ply.html
+
+Linked list help:
+https://www.codefellows.org/blog/implementing-a-singly-linked-list-in-python
+Additional help from
+http://stackoverflow.com/questions/15710895/doubly-linked-list-iterator-python
+http://ls.pwd.io/2014/08/singly-and-doubly-linked-lists-in-python/

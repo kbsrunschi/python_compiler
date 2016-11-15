@@ -1,0 +1,22 @@
+As there are no interdependencies between the iterations of the inner loop,
+we could easily implement loop unrolling to assign multiple indeces of c
+in one iteration of the inner loop. Furthermore, we could also apply loop
+fission on c[i] = 0, putting it in it's own loop from 0-9, to access each
+index of c one after another, increasing the speed of that small part of
+the code.
+
+Timing comparisons:
+
+Naive code:
+make file=matrix
+cpp matrix.c matrix.cpp.c
+python compiler.py matrix.cpp.c
+Total Naive Time: 0.011743
+
+Optimized Code (full pass):
+make file=matrix
+cpp matrix.c matrix.cpp.c
+python compiler.py matrix.cpp.c
+Total Optimized Full Program Time: 0.018471
+
+The optimized compiler took longer due to the need to go through the code twice which we expected but when the code executes, the program should run faster due to loop unrolling. 

@@ -1,0 +1,70 @@
+With 10000000 iterations of matrix_vector_multiply: 
+index % time    self  children    called     name
+                0.36    0.00 10000000/10000000     main [2]
+[1]     78.3    0.36    0.00 10000000         matrix_vector_multiply [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     78.3    0.00    0.36                 main [2]
+                0.36    0.00 10000000/10000000     matrix_vector_multiply [1]
+                0.00    0.00       1/1           init_matrix [5]
+                0.00    0.00       1/1           init_vector [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     15.2    0.07    0.00                 _mcount_private [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]      6.5    0.03    0.00                 __fentry__ [4]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[5]      0.0    0.00    0.00       1         init_matrix [5]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[6]      0.0    0.00    0.00       1         init_vector [6]
+In brief: matrix_vector_multiply took .36 seconds to run 10000000 times.
+
+With 10000000 iterations of matrix_vector_multiply with interchange applied:
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     78.7    0.02    0.35                 main [1]
+                0.35    0.00 10000000/10000000     matrix_vector_multiply [2]
+                0.00    0.00       1/1           init_matrix [5]
+                0.00    0.00       1/1           init_vector [6]
+-----------------------------------------------
+                0.35    0.00 10000000/10000000     main [1]
+[2]     74.5    0.35    0.00 10000000         matrix_vector_multiply [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     12.8    0.06    0.00                 _mcount_private [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]      8.5    0.04    0.00                 __fentry__ [4]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[5]      0.0    0.00    0.00       1         init_matrix [5]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[6]      0.0    0.00    0.00       1         init_vector [6]
+In brief: matrix_vector_multiply with interchange took .35 seconds to run 10000000 times.
+
+With 10000000 iterations of matrix_vector_multiply with unrolling applied:
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     94.6    0.03    0.32                 main [1]
+                0.32    0.00 10000000/10000000     matrix_vector_multiply [2]
+                0.00    0.00       1/1           init_matrix [4]
+                0.00    0.00       1/1           init_vector [5]
+-----------------------------------------------
+                0.32    0.00 10000000/10000000     main [1]
+[2]     86.5    0.32    0.00 10000000         matrix_vector_multiply [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]      5.4    0.02    0.00                 __fentry__ [3]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[4]      0.0    0.00    0.00       1         init_matrix [4]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[5]      0.0    0.00    0.00       1         init_vector [5]
+In brief: matrix_vector_multiply with unrolling took .32 seconds to run 10000000 times.
+
+Both of the optimizations were faster than the naive code, as is expected.
